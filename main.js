@@ -71,7 +71,10 @@ function validaEntrada(texto) {
 	let erros = [];
 	let textoAcentuado = false;
 	let contemNumeros = false;
-	let acentuados = 'àèìòùâêîôûäëïöüáéíóúãõ'.split('');
+	let acentuados =
+		"àèìòùâêîôûäëïöüáéíóúãõ''!@#%¨&*($'~)_¹²³£¢¬§ªº°.,-+=><;´`:?{/}^`{''}[]|".split(
+			'',
+		);
 
 	// Validação de acentuação
 	for (let i = 0; i < acentuados.length; i++) {
@@ -93,7 +96,8 @@ function validaEntrada(texto) {
 
 	if (texto.toLowerCase() != texto) erros.push('Apenas letras minúsculas.');
 	if (contemNumeros) erros.push('Não insira números.');
-	if (textoAcentuado) erros.push('Não utilize acentuação.');
+	if (textoAcentuado)
+		erros.push('Não utilize acentuação ou caracteres especiais.');
 
 	return erros;
 }
