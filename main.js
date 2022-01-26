@@ -25,6 +25,7 @@ const textoCopiar = document.getElementById('modal-copiar-texto');
 const listaErros = document.getElementById('erros');
 let entradaValida = true;
 
+
 /* Lógica de Criptografia */
 
 const vogais = ['e', 'i', 'a', 'o', 'u'];
@@ -66,17 +67,14 @@ function descriptografar(texto) {
 		texto = texto.replaceAll(saida[i], vogais[i]);
 	return texto;
 }
-
+ // filtro acentuação e caracteres especial
 function validaEntrada(texto) {
 	let erros = [];
 	let textoAcentuado = false;
 	let contemNumeros = false;
-	let acentuados =
-		"àèìòùâêîôûäëïöüáéíóúãõ''!@#%¨&*($'~)_¹²³£¢¬§ªº°.,-+=><;´`:?{/}^`{''}[]|".split(
-			'',
-		);
+	let acentuados ="/[1\\!\¹\'2'\@\²\'3'\#\³\'4'\$\£\'5'\%\¢\'6'\¨\¬\'7'\&\'8'\*\'9'\(\'0'\´\)\-\_\=\+\§\`\[\{\ª\~\^\}\º\|\,\<\.\>\;\:\\\\/\?\°\"\']/àèìòùâêîôûäëïöüáéíóúãõ''!@#%¨&*($'~)_¹²³£¢¬§ªº°.,-+=><;´`:?{/}^`{''}[]|".split('');
 
-	// Validação de acentuação
+// Validação de acentuação
 	for (let i = 0; i < acentuados.length; i++) {
 		let letra = acentuados[i];
 		if (texto.toLowerCase().includes(letra)) {
@@ -84,6 +82,7 @@ function validaEntrada(texto) {
 			break;
 		}
 	}
+
 
 	// Validação de números
 	for (let i = 0; i < texto.length; i++) {
